@@ -1,0 +1,13 @@
+angular.module('titleSuggesterApp').run(['$templateCache', function($templateCache) {
+  'use strict';
+
+  $templateCache.put('views/about.html',
+    "<p>This is the about view.</p>"
+  );
+
+
+  $templateCache.put('views/main.html',
+    "<div class=\"row\"> <div class=\"col-md-12\"> <p>Headline:</p> <input ng-model=\"headline\" ng-change=\"changeHeadline()\" class=\"form-control\"> </div> </div> <div class=\"row\"> <div class=\"col-md-12\"> <p>Url:</p> <input ng-model=\"url\" class=\"form-control\"> </div> </div> <div class=\"row\"> <div class=\"col-md-12\"> <p>Keywords:</p> <ul> <li ng-repeat=\"h in keywordsList() track by $index\"> <input type=\"checkbox\" ng-model=\"keywords\">{{h}}</li> </ul> </div> </div> {{keywords}} <hr> <div class=\"row\"> <div class=\"col-md-12\"> <div class=\"jumbotron\"> <p class=\"small\">Preview Twitter</p> <textarea class=\"form-control\">{{twitter()}}</textarea> <hr> <p>Health:</p> <ul> <li>Length: <span class=\"label\" ng-class=\"{'label-danger':twitter().length > 140, 'label-success': twitter().length <= 140, }\">{{twitter().length}}</span></li> <li>Keywords: <span ng-show=\"hasKeywords('twitter')\" class=\"label label-success\">yes</span><span ng-hide=\"hasKeywords('twitter')\" class=\"label label-danger\">no</span></li> </ul> </div> </div> </div> <div class=\"row\"> <div class=\"col-md-12\"> <div class=\"jumbotron\"> <p class=\"small\">Preview Facebook</p> <textarea class=\"form-control\">{{facebook()}}</textarea> <hr> <p>Health:</p> <ul> <li>Length: <span class=\"label\" ng-class=\"{'label-danger':facebook().length > 140, 'label-success': facebook().length <= 140, }\">{{facebook().length}}</span></li> <li>Keywords: <span ng-show=\"hasKeywords('facebook')\" class=\"label label-success\">yes</span><span ng-hide=\"hasKeywords('facebook')\" class=\"label label-danger\">no</span></li> </ul> </div> </div> </div>"
+  );
+
+}]);
